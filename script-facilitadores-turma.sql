@@ -15,7 +15,7 @@ CREATE TABLE "facilitadores" (
   "modulo_id" int,
   "curso_id" int
   
- -- CONSTRAINT fk_turma_id FOREIGN KEY (turma_id) REFERÊNCIAS turma (turma_id),
+ -- CONSTRAINT fk_turma_id FOREIGN KEY (turma_id) REFERENCES turma (turma_id),
  -- CONSTRAINT fk_modulo_id FOREIGN KEY (modulo_id) REFERENCES modulo (modulo_id),
  -- CONSTRAINT fk_curso_id FOREIGN KEY (curso_id) REFERENCES cursos (turma_id)
   );
@@ -26,7 +26,7 @@ CREATE TABLE "turma" (
   "facilitador_id" int,
   "nome_turma" varchar(50)
   
- -- CONSTRAINT fk_aluno_id FOREIGN KEY (aluno_id) REFERÊNCIAS alunos (aluno_id),
+ -- CONSTRAINT fk_aluno_id FOREIGN KEY (aluno_id) REFERENCES alunos (aluno_id),
  -- CONSTRAINT fk_facilitador_id FOREIGN KEY (facilitador_id) REFERENCES facilitadores (facilitador_id),
 );
 
