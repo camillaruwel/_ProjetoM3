@@ -10,7 +10,7 @@ left join turma as t
 	on t.turma_id = a.turma_id 
 left join cursos as c 
 	on c.curso_id = t.curso_id 
-order by 1
+order by 1;
 
 -- PERGUNTA 3: Pessoas facilitadoras que atuam em mais de uma turma
 select 
@@ -24,6 +24,7 @@ left join alocacao as al
 left join modulos as m 
 	on m.modulo_id = al.modulo_id 
 where al.turma_id is not null
+order by 1;
 
 -- PERGUNTA 4: Qual estado BR possui mais alunos cadastrados?
 select 
@@ -31,9 +32,9 @@ select
 	count(distinct aluno_id) as alunos
 from alunos as a
 group by 1
-order by 2 desc
+order by 2 desc;
 
--- PERGUNTA 5: Qual estado BR possui mais alunos?
+-- PERGUNTA 5: Qual a média de avalição do curso pelos resilientes?
 select 
 	c.nome_curso,
 	avg(r.avaliacao) as nota 
@@ -45,10 +46,10 @@ left join turma as t
 left join cursos as c 
 	on c.curso_id = t.curso_id 
 group by 1
-order by 2 desc
+order by 2 desc;
 
 
--- PERGUNTA 6: Qual a média da nota atribuída ao curso pelos alunos?
+-- PERGUNTA 6: Qual facilitador deu aula durante o mês 6 e 9 de 2022?
 select 
 	f.nome,
 	f.frente,
@@ -58,6 +59,7 @@ left join alocacao as al
 	on al.facilitador_id = f.facilitador_id 
 where al.data_inicio_modulo >= date('2022-06-01')
 and al.data_final_modulo <= date('2022-09-01')
+order by 1;
 
 -- PERGUNTA 7: De Milhões 🌽(Quais alunos (e suas respectivas turmas) que já concluiram o curso?)
 select
