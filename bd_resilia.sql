@@ -79,7 +79,7 @@ create table "alocacao" (
  */
 -------------------------------------------- CURSOS
 
-INSERT INTO cursos (nome_curso) VALUES ('Data analytics');
+INSERT INTO cursos (nome_curso) VALUES ('Data Analytics');
 INSERT INTO cursos (nome_curso) VALUES ('WebDev Full Stack');
 
 -------------------------------------------- FACILITADORES 
