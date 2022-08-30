@@ -17,12 +17,12 @@ select
 	f.nome, 
 	f.facilitacao, 
 	f.frente, 
-	count(distinct a.turma_id) as qnt_turmas
-from alocacao a 
-left join facilitadores f on a.facilitador_id = f.facilitador_id 
-group by 1,2, 3
-having count(distinct a.turma_id) > 1
-order by qnt_turmas desc
+	count(distinct al.turma_id) as qnt_turmas
+from alocacao as al 
+left join facilitadores as f on al.facilitador_id = f.facilitador_id 
+group by 1,2,3
+having count(distinct al.turma_id) > 1
+order by 4 desc;
 
 -- PERGUNTA 4: Qual estado BR possui mais alunos cadastrados?
 select 
@@ -49,7 +49,7 @@ order by 2 desc;
 
 -- PERGUNTA 6: Qual facilitador deu aula durante o mês 6 e 9 de 2022?
 select 
-	f.nome,
+	distinct f.nome,
 	f.frente,
 	f.facilitacao 
 from facilitadores as f
