@@ -14,17 +14,15 @@ order by 1;
 
 -- PERGUNTA 3: Pessoas facilitadoras que atuam em mais de uma turma
 select 
-	f.nome,
-	f.facilitacao,
-	al.turma_id,
-	lower(m.ementa) as ementa  
-from facilitadores as f
-left join alocacao as al
-	on al.facilitador_id = f.facilitador_id 
-left join modulos as m 
-	on m.modulo_id = al.modulo_id 
-where al.turma_id is not null
-order by 1;
+	f.nome, 
+	f.facilitacao, 
+	f.frente, 
+	count(distinct a.turma_id) as qnt_turmas
+from alocacao a 
+left join facilitadores f on a.facilitador_id = f.facilitador_id 
+group by 1,2, 3
+having count(distinct a.turma_id) > 1
+order by qnt_turmas desc
 
 -- PERGUNTA 4: Qual estado BR possui mais alunos cadastrados?
 select 
