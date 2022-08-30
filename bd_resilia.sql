@@ -1,3 +1,6 @@
+/*
+* CRIAÇÃO DAS TABELAS DO SISTEMA RESILIA DATA
+*/
 CREATE TABLE "cursos" (
   "curso_id" serial primary key,
   "nome_curso" varchar(50)
@@ -72,14 +75,12 @@ create table "alocacao" (
 
 
 /**
- * INSERÇÃO
+ * INSERÇÃO DOS DADOS NAS TABELAS
  */
 -------------------------------------------- CURSOS
 
 INSERT INTO cursos (nome_curso) VALUES ('Data analytics');
 INSERT INTO cursos (nome_curso) VALUES ('WebDev Full Stack');
-
---select * from cursos c ;
 
 -------------------------------------------- FACILITADORES 
 
@@ -106,8 +107,6 @@ VALUES
 	('Davi Oliver Caldeira','714.328.909-48', 'Masculino','1989/02/02','(47) 98844-0782','davi.oliver.caldeira@portalpublicidade.com.br','Data Analytics','Soft Skill'),
 	('Nathan Sebastião Drumond','916.274.162-42', 'Masculino','1989/02/15','(61) 99496-3062','nathan.sebastiao.drumond@eclatt.com.br','Data Analytics','Hard Skill');
 	
---select * from facilitadores f ;
-
 -------------------------------------------- MODULOS
 
 INSERT INTO modulos (curso_id,ementa) VALUES (1, 'Introdução à lógica de programação para dados e preparação para Processos Seletivos');
@@ -120,8 +119,6 @@ INSERT INTO modulos (curso_id,ementa) VALUES (2, 'ORIENTAÇÃO A OBJETOS,UTILIZA
 INSERT INTO modulos (curso_id,ementa) VALUES (2, 'MODELOS DE ARMAZENAMENTO DE DADOS E METODOLOGIAS ÁGEIS');
 INSERT INTO modulos (curso_id,ementa) VALUES (2, 'FRAMEWORKS, BIBLIOTECAS, TECNOLOGIAS SERVER-SIDE BACK-END, POSTURA PROFISSIONAL E INOVAÇÃO');
 INSERT INTO modulos (curso_id,ementa) VALUES (2, 'FRAMEWORKS, BIBLIOTECAS, TECNOLOGIAS CLIENT-SIDE FRONT-END, FOCO EM CARREIRA E PROCESSO SELETIVO');
-
---select * from modulos m ;
 
 -------------------------------------------- TURMA
 
@@ -147,8 +144,6 @@ values
 	(1,'T18', 'Em andamento','2021-08-25','2022-02-28'),
 	(1,'T19', 'Em andamento','2022-02-25','2022-09-28'),
 	(2,'T20', 'Em andamento','2022-05-19','2022-11-11');
-
---select * from turma t ;
 
 -------------------------------------------- ALUNOS
 INSERT INTO alunos (nome,cpf,genero,estado,data_nascimento,telefone,forma_pagamento, turma_id)
@@ -189,9 +184,7 @@ VALUES
 	('Pietra Porto','44420972084','Feminino','PR','1996-04-17','(41)-987892256','Parcelado durante o curso',9),
 	('Mariana Martins','51514057050','Feminino','SP','2001-12-04','(11)-903026752','Parcelado durante o curso',20);
 
---select * from alunos
 -------------------------------------------- RESILIENTES
--- select aluno_id from alunos where turma_id>16; confirmando quais alunos ja formaram
 
 INSERT INTO resilientes (aluno_id,avaliacao) VALUES (2,7);
 INSERT INTO resilientes (aluno_id,avaliacao) VALUES (3,5);
@@ -209,8 +202,6 @@ INSERT INTO resilientes (aluno_id,avaliacao) VALUES (27,10);
 INSERT INTO resilientes (aluno_id,avaliacao) VALUES (28,10);
 INSERT INTO resilientes (aluno_id,avaliacao) VALUES (35,10);
 
---select * from resilientes;
-
 -------------------------------------------- ALOCAÇÃO
 
 insert into alocacao (turma_id, modulo_id, facilitador_id, data_inicio_modulo, data_final_modulo) 
@@ -222,4 +213,26 @@ values
     (19,8,5,'2022-08-15','2022-09-12'),
     (19,8,6,'2022-08-15','2022-09-12'),
     (20,3,7,'2022-08-01','2022-09-01'),
-    (20,3,8,'2022-08-01','2022-09-01');
+    (20,3,8,'2022-08-01','2022-09-01'),
+    (17,6,11,'2022-01-18','2022-03-15'),
+    (17,6,12,'2022-01-18','2022-03-15'),
+    (17,7,3,'2022-03-15','2022-04-15'),
+    (17,7,4,'2022-03-18','2022-04-15'),
+    (17,8,5,'2022-04-18','2022-05-25'),
+    (17,8,6,'2022-04-18','2022-05-25'),
+    (17,9,13,'2022-06-18','2022-07-15'),
+    (17,9,14,'2022-06-18','2022-07-15'),
+    (18,6,5,'2022-04-18','2022-05-15'),
+    (18,6,2,'2022-04-18','2022-05-15'),
+    (18,7,3,'2022-05-18','2022-06-15'),
+    (18,7,2,'2022-05-18','2022-06-15'),
+    (18,8,1,'2022-06-18','2022-07-15'),
+    (18,8,2,'2022-06-18','2022-07-15'),
+    (19,6,5,'2022-06-15','2022-07-15'),
+    (19,6,2,'2022-06-15','2022-07-15'),
+    (19,7,5,'2022-07-15','2022-08-15'),
+    (19,7,12,'2022-07-15','2022-08-15'),
+    (20,2,7,'2022-06-28','2022-08-01'),
+    (20,2,9,'2022-06-28','2022-08-01'),
+    (20,1,7,'2022-05-21','2022-06-28'),
+    (20,1,20,'2022-05-21','2022-06-28');
