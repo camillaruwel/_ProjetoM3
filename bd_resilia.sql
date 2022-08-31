@@ -1,6 +1,5 @@
-/*
-* CRIAÇÃO DAS TABELAS DO SISTEMA RESILIA DATA
-*/
+-- CRIANDO AS TABELAS DO SISTEMA "RESILIA-DATA"
+
 CREATE TABLE "cursos" (
   "curso_id" serial primary key,
   "nome_curso" varchar(50)
@@ -17,7 +16,6 @@ CREATE TABLE "facilitadores" (
   "frente" varchar(50),
   "facilitacao" varchar(50)
  );
-
 
 CREATE TABLE "modulos" (
   "modulo_id" serial PRIMARY KEY,
@@ -73,10 +71,64 @@ create table "alocacao" (
 	constraint fk_facilitador foreign key(facilitador_id) references facilitadores(facilitador_id)
 );
 
+-- Criação de duas tabelas de registros, uma de alunos e outra de facilitadores
 
-/**
- * INSERÇÃO DOS DADOS NAS TABELAS
- */
+CREATE TABLE "log_facilitadores" (
+	log_entry_id SERIAL PRIMARY KEY,
+	facilitador_id INT,
+	date_insert TIMESTAMP,
+	FOREIGN KEY (facilitador_id) REFERENCES facilitadores (facilitador_id)
+);
+
+CREATE TABLE "log_alunos" (
+	log_entry_id SERIAL PRIMARY KEY,
+	aluno_id INT,
+	date_insert TIMESTAMP,
+	FOREIGN KEY (aluno_id) REFERENCES alunos (aluno_id)
+);
+
+-- Criando as funções e triggers que vão inserir os dados nas tabelas de registro
+
+CREATE OR REPLACE FUNCTION log_facilitadores_func()
+	RETURNS TRIGGER
+		LANGUAGE plpgsql
+	AS $log_fac_function$
+	BEGIN
+		INSERT INTO
+			log_facilitadores (facilitador_id,date_insert)
+		VALUES
+			(NEW.facilitador_id, CURRENT_TIMESTAMP);
+	RETURN NEW;
+	END;
+	$log_fac_function$
+
+CREATE TRIGGER log_trigger_facilitadores
+	AFTER INSERT ON facilitadores
+	FOR EACH ROW
+		EXECUTE PROCEDURE
+			log_facilitadores_func();
+			
+CREATE OR REPLACE FUNCTION log_alunos_func()
+	RETURNS TRIGGER
+		LANGUAGE plpgsql
+	AS $log_aluno_function$
+	BEGIN
+		INSERT INTO 
+			log_alunos (aluno_id,date_insert)
+		VALUES
+			(NEW.aluno_id, CURRENT_TIMESTAMP);
+	RETURN NEW;
+	END;
+	$log_aluno_function$
+	
+CREATE TRIGGER log_trigger_aluno
+	AFTER INSERT ON alunos
+	FOR EACH ROW
+		EXECUTE PROCEDURE
+			log_alunos_func();
+
+-- INSERÇÃO DE DADOS
+
 -------------------------------------------- CURSOS
 
 INSERT INTO cursos (nome_curso) VALUES ('Data Analytics');
@@ -146,6 +198,7 @@ values
 	(2,'T20', 'Em andamento','2022-05-19','2022-11-11');
 
 -------------------------------------------- ALUNOS
+
 INSERT INTO alunos (nome,cpf,genero,estado,data_nascimento,telefone,forma_pagamento, turma_id)
 VALUES
 	('Davi Luiz Cardoso','42758524783','Masculino','CE','1998-04-27','(85)-937882655','ISA',10),
