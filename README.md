@@ -1,6 +1,4 @@
 
-  
-
 # <font  color="#DAA520">Resilia - Banco Resilia Data - Data Analytics: Módulo 3</font>
 
 ### Objetivo do Projeto 🎯:
@@ -105,3 +103,8 @@ Após a criação das tabelas no passo anterior, as queries desenvolvidas para e
  5. Qual a média de avalição do curso pelos resilientes?
  6. Qual facilitador deu aula durante o mês 6 e 9 de 2022?
  7. Quais alunos (e suas respectivas turmas) que já concluiram o curso?
+
+---
+### Apresentação ✨:
+
+O link de nossa apresentação se encontra disponível aqui. [Apresentação Squad de Milhões 🌽🌽🌽 - Módulo 3: Resilia Data Analytics.](https://www.canva.com/design/DAFKwSRcb90/wQljhlTZsa-0WyW-5JEYHw/view?utm_content=DAFKwSRcb90&utm_campaign=designshare&utm_medium=link2&utm_source=sharebutton)
